@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bayu Arya Seta</title>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;700&family=Bangers&display=swap" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/js/all.min.js"></script>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <main class="main-wrapper">
+        <div class="linktree-container">
+            
+            <!-- Profil -->
+            <header class="profile-section reveal">
+                <div class="avatar-container">
+                    <img src="src/image.jpg" alt="Bayu Arya Seta" class="avatar">
+                    <div class="status-tag">IT'S ME!</div>
+                </div>
+                <h1 class="username">BAYU ARYA SETA</h1>
+                <p class="bio">IT Student & Founder of Shintoku Store | Graphic Designer at Arse.desgn</p>
+            </header>
+
+            <!-- Tautan (Links) -->
+            <nav class="links-stack">
+                <a href="https://www.instagram.com/setryab/" class="comic-button reveal d-1">
+                    <span>INSTAGRAM</span>
+                    <i class="fab fa-instagram"></i>
+                </a>
+                <a href="https://www.facebook.com/seto.sanwa.3/" class="comic-button reveal d-3">
+                    <span>FACEBOOK</span>
+                    <i class="fab fa-facebook"></i>
+                </a>
+                <a href="https://github.com/setaaryb" class="comic-button reveal d-2">
+                    <span>GITHUB</span>
+                    <i class="fa-brands fa-github"></i>
+                </a>
+                
+                <a href="https://chat.whatsapp.com/KiPWc4mV8m70Y4tWJtzMNk" class="comic-button reveal d-4">
+                    <span>LINK GB LAGA INDRAMAYU</span>
+                    <i class="fab fa-whatsapp"></i>
+                </a>
+                
+                <a href="SHINTOKU/" class="comic-button reveal d-4">
+                    <span>LINK GC & SALURAN STOK SHINTOKU</span>
+                    <i class="fab fa-whatsapp"></i>
+                </a>
+                
+            <!-- Bagian Musik -->
+            <div class="reveal d-4">
+                <button id="toggleMusic" class="music-toggle-btn">
+                    <i class="fas fa-play-circle"></i> BUKA PLAYLIST
+                </button>
+                
+                <div id="musicPanel" class="music-player-panel">
+                    <div class="player-controls">
+                        <i id="discIcon" class="fas fa-compact-disc disc-icon"></i>
+                        <div style="flex-grow: 1; min-width: 0;">
+                            <p style="font-size: 0.65rem; color: #888; text-transform: uppercase; font-weight: bold;">Sekarang Memutar:</p>
+                            <p id="currentSongTitle" style="font-family: var(--font-comic); font-size: 1.1rem; color: var(--accent); white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">Lofi Vibes</p>
+                            <input type="range" id="progressBar" value="0" style="width: 100%; margin-top: 8px; accent-color: var(--accent); cursor: pointer;">
+                        </div>
+                        <button id="playBtn" style="background: none; border: none; color: var(--main-text); font-size: 1.8rem; cursor: pointer; flex-shrink: 0;">
+                            <i class="fas fa-play"></i>
+                        </button>
+                    </div>
+
+                    <ul class="playlist" id="playlist">
+                        <li class="playlist-item active" data-src="https://raw.githubusercontent.com/setaaryb/setaaryb.github.io/refs/heads/main/src/lampu-kuning.mp3">
+                            <span>01. Juicy Luicy - Lampu Kuning</span>
+                            <i class="fas fa-music"></i>
+                        </li>
+                        <li class="playlist-item" data-src="https://raw.githubusercontent.com/setaaryb/setaaryb.github.io/refs/heads/main/src/Juicy%20Luicy%20-%20Lantas.mp3">
+                            <span>02. Juicy Luicy - Lantas</span>
+                            <i class="fas fa-music"></i>
+                        </li>
+                        <li class="playlist-item" data-src="https://raw.githubusercontent.com/setaaryb/setaaryb.github.io/refs/heads/main/src/Kendis%2C%20Adis%20-%20ours%20to%20keep.mp3">
+                            <span>03. Kendis, Adis - ours to keep</span>
+                            <i class="fas fa-music"></i>
+                        </li>
+                        <li class="playlist-item" data-src="https://raw.githubusercontent.com/setaaryb/setaaryb.github.io/refs/heads/main/src/Hindia%20-%20Kita%20Kesana.mp3">
+                            <span>04.  Hindia - Kita Kesana</span>
+                            <i class="fas fa-music"></i>
+                        </li>
+                        <li class="playlist-item" data-src="https://raw.githubusercontent.com/setaaryb/setaaryb.github.io/refs/heads/main/src/Feast%20-%20Tarot.mp3">
+                            <span>05. Feast - Tarot</span>
+                            <i class="fas fa-music"></i>
+                        </li>
+                        <li class="playlist-item" data-src="https://raw.githubusercontent.com/setaaryb/setaaryb.github.io/refs/heads/main/src/feast%20-%20Nina.mp3">
+                            <span>06. feast - Nina</span>
+                            <i class="fas fa-music"></i>
+                        </li>
+                    </ul>
+                    <audio id="mainAudio"></audio>
+                </div>
+            </div>
+
+            <footer class="footer-section reveal d-4" style="animation-delay: 0.6s;">
+                <div class="line"></div>
+                <p>VOL. 2026 / NO. 01</p>
+                <div class="line"></div>
+            </footer>
+        </div>
+    </main>
+
+    <script>
+        const toggleMusic = document.getElementById('toggleMusic');
+        const musicPanel = document.getElementById('musicPanel');
+        const playBtn = document.getElementById('playBtn');
+        const audio = document.getElementById('mainAudio');
+        const discIcon = document.getElementById('discIcon');
+        const progressBar = document.getElementById('progressBar');
+        const playlistItems = document.querySelectorAll('.playlist-item');
+        const currentSongTitle = document.getElementById('currentSongTitle');
+
+        let isPlaying = false;
+
+        audio.src = playlistItems[0].getAttribute('data-src');
+        currentSongTitle.innerText = playlistItems[0].querySelector('span').innerText;
+
+        toggleMusic.addEventListener('click', () => {
+            musicPanel.classList.toggle('active');
+            toggleMusic.innerHTML = musicPanel.classList.contains('active') 
+                ? '<i class="fas fa-times-circle"></i> TUTUP PLAYLIST' 
+                : '<i class="fas fa-play-circle"></i> BUKA PLAYLIST';
+            
+            if(musicPanel.classList.contains('active')) {
+                setTimeout(() => {
+                    musicPanel.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+                }, 300);
+            }
+        });
+
+        function playSong() {
+            audio.play().catch(e => console.log("Menunggu interaksi pengguna untuk memutar audio."));
+            isPlaying = true;
+            playBtn.innerHTML = '<i class="fas fa-pause"></i>';
+            discIcon.classList.add('playing');
+        }
+
+        function pauseSong() {
+            audio.pause();
+            isPlaying = false;
+            playBtn.innerHTML = '<i class="fas fa-play"></i>';
+            discIcon.classList.remove('playing');
+        }
+
+        playBtn.addEventListener('click', () => {
+            if (isPlaying) pauseSong(); else playSong();
+        });
+
+        playlistItems.forEach(item => {
+            item.addEventListener('click', () => {
+                playlistItems.forEach(i => i.classList.remove('active'));
+                item.classList.add('active');
+                audio.src = item.getAttribute('data-src');
+                currentSongTitle.innerText = item.querySelector('span').innerText;
+                playSong();
+            });
+        });
+
+        // Update progress bar
+        audio.addEventListener('timeupdate', () => {
+            if (audio.duration) {
+                progressBar.value = (audio.currentTime / audio.duration) * 100;
+            }
+        });
+
+        progressBar.addEventListener('input', () => {
+            if (audio.duration) {
+                audio.currentTime = (progressBar.value / 100) * audio.duration;
+            }
+        });
+
+        // Pindah lagu otomatis saat selesai
+        audio.addEventListener('ended', () => {
+            pauseSong();
+        });
+    </script>
+</body>
+</html>

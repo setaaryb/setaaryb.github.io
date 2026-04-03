@@ -1,0 +1,276 @@
+:root {
+    --bg-color: #fcfcfc;
+    --card-bg: #ffffff;
+    --main-text: #1a1a1a;
+    --accent: #2563eb;
+    --comic-yellow: #ffde00;
+    --comic-red: #ff4747;
+    --border-color: #1a1a1a;
+    --border-width: 3px;
+    --shadow: 8px 8px 0px #1a1a1a;
+    --font-comic: 'Bangers', cursive;
+    --font-clean: 'Plus Jakarta Sans', sans-serif;
+    --grid-color: rgba(0, 0, 0, 0.05);
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+    background-color: var(--bg-color);
+    color: var(--main-text);
+    font-family: var(--font-clean);
+    overflow-x: hidden;
+    padding-bottom: 30px;
+    /* Latar Belakang Grid Retro */
+    background-image: 
+        linear-gradient(var(--grid-color) 1px, transparent 1px),
+        linear-gradient(90deg, var(--grid-color) 1px, transparent 1px);
+    background-size: 30px 30px;
+}
+
+.main-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding: 20px;
+}
+
+.linktree-container {
+    width: 100%;
+    max-width: 440px;
+    background: var(--card-bg);
+    padding: 40px 30px;
+    border: var(--border-width) solid var(--border-color);
+    box-shadow: 15px 15px 0px rgba(0,0,0,0.05);
+    position: relative;
+    margin: auto;
+}
+
+.profile-section {
+    text-align: center;
+    margin-bottom: 35px;
+}
+
+.avatar-container {
+    position: relative;
+    display: inline-block;
+    margin-bottom: 20px;
+}
+
+.avatar {
+    width: 120px; 
+    height: 120px;
+    border-radius: 50%; 
+    border: var(--border-width) solid var(--border-color);
+    object-fit: cover; 
+    background: #eee;
+    display: block;
+}
+
+.status-tag {
+    position: absolute;
+    bottom: 5px; 
+    right: -10px;
+    background: var(--comic-yellow);
+    color: var(--main-text);
+    border: 2px solid var(--border-color);
+    padding: 4px 12px;
+    font-family: var(--font-comic);
+    font-size: 0.85rem;
+    transform: rotate(8deg);
+    box-shadow: 3px 3px 0px rgba(0,0,0,0.2);
+    white-space: nowrap;
+}
+
+.username {
+    font-family: var(--font-comic);
+    font-size: 2.8rem;
+    letter-spacing: 1px;
+    margin-bottom: 5px;
+    line-height: 1;
+    text-transform: uppercase;
+    word-wrap: break-word;
+}
+
+.bio {
+    font-size: 1rem;
+    color: #555;
+    font-weight: 500;
+    padding: 0 10px;
+}
+
+.links-stack {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.comic-button {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 16px 20px;
+    background: white;
+    border: var(--border-width) solid var(--border-color);
+    text-decoration: none;
+    color: var(--main-text);
+    font-weight: 700;
+    box-shadow: 6px 6px 0px var(--border-color);
+    transition: all 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    font-size: 1rem;
+}
+
+.comic-button:hover, .comic-button:active {
+    transform: translate(-3px, -3px);
+    box-shadow: 10px 10px 0px var(--accent);
+    color: var(--accent);
+}
+
+.music-toggle-btn {
+    width: 100%;
+    margin-top: 25px;
+    padding: 15px;
+    background: var(--comic-yellow);
+    color: var(--main-text);
+    border: var(--border-width) solid var(--border-color);
+    font-family: var(--font-comic);
+    font-size: 1.3rem;
+    cursor: pointer;
+    box-shadow: 6px 6px 0px var(--border-color);
+    transition: 0.2s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
+
+.music-player-panel {
+    max-height: 0;
+    overflow: hidden;
+    opacity: 0;
+    transition: all 0.4s ease-in-out;
+    background: #fff;
+}
+
+.music-player-panel.active {
+    max-height: 600px;
+    opacity: 1;
+    margin-top: 20px;
+    padding: 20px;
+    border: var(--border-width) solid var(--border-color);
+    box-shadow: var(--shadow);
+}
+
+.player-controls {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 20px;
+}
+
+.disc-icon {
+    font-size: 2.5rem;
+    color: var(--comic-red);
+    animation: spin 3s linear infinite;
+    animation-play-state: paused;
+    flex-shrink: 0;
+}
+
+.disc-icon.playing { animation-play-state: running; }
+
+@keyframes spin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+
+.playlist {
+    list-style: none;
+    border-top: 2px solid #eee;
+    padding-top: 15px;
+}
+
+.playlist-item {
+    padding: 12px;
+    border: 2px solid transparent;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 0.9rem;
+    font-weight: 700;
+    transition: 0.2s;
+    margin-bottom: 8px;
+}
+
+.playlist-item:hover { background: #f8f8f8; }
+
+.playlist-item.active {
+    border-color: var(--border-color);
+    background: var(--comic-yellow);
+    box-shadow: 4px 4px 0px var(--border-color);
+}
+
+.divider-container {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin: 20px 0;
+    width: 100%;
+}
+
+.divider-text {
+    font-family: 'Bangers', cursive;
+    font-size: 0.9rem;
+    color: #000000;
+    white-space: nowrap;
+    letter-spacing: 1px;
+}
+
+.divider-container .line {
+    flex: 1;
+    height: 2px;
+    background-color: #000000;
+}
+
+/* Footer */
+.footer-section {
+    margin-top: 50px;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    opacity: 0.7;
+}
+
+.line { height: 2px; flex-grow: 1; background: var(--border-color); }
+.footer-section p { font-family: var(--font-comic); font-size: 1rem; }
+
+.reveal {
+    opacity: 0;
+    transform: translateY(15px);
+    animation: fadeInUp 0.5s ease-out forwards;
+}
+@keyframes fadeInUp { to { opacity: 1; transform: translateY(0); } }
+.d-1 { animation-delay: 0.1s; }
+.d-2 { animation-delay: 0.2s; }
+.d-3 { animation-delay: 0.3s; }
+.d-4 { animation-delay: 0.4s; }
+
+@media (max-width: 380px) {
+    .linktree-container { padding: 30px 20px; }
+    .username { font-size: 2.2rem; }
+    .avatar { width: 100px; height: 100px; }
+    .comic-button { padding: 12px 15px; font-size: 0.9rem; }
+    .status-tag { font-size: 0.75rem; right: -5px; }
+}
+
+@media (min-width: 768px) {
+    .linktree-container {
+        max-width: 500px;
+        padding: 50px 40px;
+    }
+    .username { font-size: 3.5rem; }
+    .gallery-grid { gap: 20px; }
+}
+
+@media (hover: none) {
+    .comic-button:hover { transform: none; }
+    .comic-button:active { transform: scale(0.98); }
+}
